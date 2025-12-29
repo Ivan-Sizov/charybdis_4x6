@@ -41,32 +41,31 @@
 
     /* input config for mouse scroll mode */
 
-    trackball_scroll_vertical_listener {
+    trackball_scroll_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&vtrackball>;
         layers = <3>;
         evt-type = <INPUT_EV_REL>;
-        input-codes = <INPUT_REL_WHEEL>;
+        x-input-code = <INPUT_REL_HWHEEL>;
+        y-input-code = <INPUT_REL_WHEEL>;
         invert;
-        bindings = <&ib_rel_scaler 1 14>;
-    };
-    
-    trackball_scroll_horizontal_listener {
-        compatible = "zmk,input-behavior-listener";
-        device = <&vtrackball>;
-        layers = <3>;
-        evt-type = <INPUT_EV_REL>;
-        input-codes = <INPUT_REL_HWHEEL>;
-        bindings = <&ib_rel_scaler 1 14>;  // Same scaler can work for both!
+        bindings = <&ib_hwheel_scaler 1 14 &ib_wheel_scaler 1 14>;
     };
 
     /* define a resolution down scaler only for INPUT_REL_WHEEL */
 
-    ib_rel_scaler: ib_rel_scaler {
+    ib_wheel_scaler: ib_wheel_scaler {
         compatible = "zmk,input-behavior-scaler";
         #binding-cells = <2>;
         evt-type = <INPUT_EV_REL>;
-        // No input-code specified = works for ALL REL events
+        input-code = <INPUT_REL_WHEEL>;
+    };
+    
+    ib_hwheel_scaler: ib_hwheel_scaler {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_HWHEEL>;  // Different input code
     };
 
     /* adjust cooldown waiting period for mouse key layer after activated */
