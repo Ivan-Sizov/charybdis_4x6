@@ -41,24 +41,32 @@
 
     /* input config for mouse scroll mode */
 
-    trackball_scroll_listener {
+    trackball_scroll_vertical_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&vtrackball>;
         layers = <3>;
         evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_HWHEEL>;
-        y-input-code = <INPUT_REL_WHEEL>;
-        y-invert;
-        bindings = <&ib_wheel_scaler 1 14>;
+        input-code = <INPUT_REL_WHEEL>;
+        invert;
+        bindings = <&ib_rel_scaler 1 14>;
+    };
+    
+    trackball_scroll_horizontal_listener {
+        compatible = "zmk,input-behavior-listener";
+        device = <&vtrackball>;
+        layers = <3>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_HWHEEL>;
+        bindings = <&ib_rel_scaler 1 14>;  // Same scaler can work for both!
     };
 
     /* define a resolution down scaler only for INPUT_REL_WHEEL */
 
-    ib_wheel_scaler: ib_wheel_scaler {
+    ib_rel_scaler: ib_rel_scaler {
         compatible = "zmk,input-behavior-scaler";
         #binding-cells = <2>;
         evt-type = <INPUT_EV_REL>;
-        input-code = <INPUT_REL_WHEEL>;
+        // No input-code specified = works for ALL REL events
     };
 
     /* adjust cooldown waiting period for mouse key layer after activated */
