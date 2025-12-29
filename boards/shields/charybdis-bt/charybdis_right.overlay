@@ -37,10 +37,12 @@
 
 / {
   split_inputs {
-    compatible = "zmk,split-inputs";
+    #address-cells = <1>;
+    #size-cells = <0>;
 
-    trackball_split: trackball_split {
+    trackball_split: trackball_split@0 {
       compatible = "zmk,input-split";
+      reg = <0>;
     };
   };
 
@@ -50,7 +52,7 @@
     device = <&trackball_split>;
 
     scroll {
-      layers = <SCROLL_LAYER>;
+      layers = <3>;
       input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
     };
   };
