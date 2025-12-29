@@ -13,14 +13,20 @@
     };
 };
 
-/ {
-	vtrackball: virtual_input_trackball {
-		compatible = "zmk,virtual-input";
-	};
+// Enable and configure the trackball directly
+&trackball {
+    status = "okay";
 
-	input_relay_config_trackball {
-		compatible = "zmk,split-peripheral-input-relay";
-		device = <&vtrackball>;
-		relay-channel = <111>;
-	};
+    compatible = "zmk,input-listener";
+
+    // Basic mouse movement (cursor control) - always active
+    mouse {
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 8 8>;
+    };
+
+    # Optional: Scroll behavior on specific layer
+    scroll {
+        layers = <3>;  // Adjust to your scroll layer number
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
+     ;
 };
