@@ -42,9 +42,9 @@
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 8 8>;
     };
 
-    # Optional: Scroll behavior on specific layer
+    // Optional: Scroll behavior on specific layer
     scroll {
         layers = <3>;  // Adjust to your scroll layer number
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
-     ;
+    };
 };
