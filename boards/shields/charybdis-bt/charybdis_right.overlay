@@ -31,20 +31,26 @@
 		;
 };
 
-// Enable and configure the trackball directly
+// Enable the trackball
 &trackball {
     status = "okay";
+};
 
-    compatible = "zmk,input-listener";
+// Create a trackball listener node
+/ {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
 
-    // Basic mouse movement (cursor control) - always active
-    mouse {
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 8 8>;
-    };
+        // Basic mouse movement (cursor control) - always active
+        mouse {
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 8 8>;
+        };
 
-    // Optional: Scroll behavior on specific layer
-    scroll {
-        layers = <3>;  // Adjust to your scroll layer number
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
+        // Optional: Scroll behavior on specific layer
+        scroll {
+            layers = <3>;  // Adjust to your scroll layer number
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
+        };
     };
 };
