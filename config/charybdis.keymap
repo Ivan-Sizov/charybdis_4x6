@@ -48,7 +48,7 @@
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_HWHEEL>;
         y-input-code = <INPUT_REL_WHEEL>;
-        bindings = <&ib_hwheel_scaler 1 14 &ib_invert_wheel &ib_wheel_scaler 1 14>;
+        bindings = <&ib_hwheel_scaler 1 14 &ib_wheel_scaler 1 14>;
     };
 
     /* define a resolution down scaler only for INPUT_REL_WHEEL */
@@ -167,14 +167,6 @@
             flavor = "balanced";
             hold-trigger-key-positions = <48 49 50 53 54 51 52 55 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 42 43 44 45 46 47 51 52>;
             hold-trigger-on-release;
-        };
-
-        ib_invert_wheel: ib_invert_wheel {
-            compatible = "zmk,input-behavior-transformer";
-            #binding-cells = <0>;
-            evt-type = <INPUT_EV_REL>;
-            input-code = <INPUT_REL_WHEEL>;
-            transform = <(-1)>;
         };
     };
 
