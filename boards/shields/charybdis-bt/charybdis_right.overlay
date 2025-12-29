@@ -56,7 +56,7 @@
   trackball_listener: trackball_listener {
     compatible = "zmk,input-listener";
     status = "disabled";
-    device = <&trackball_split>;
+    device = <&trackball>;
 
     scroll {
       layers = <Scroll>;
