@@ -43,7 +43,7 @@
 
     trackball_scroll_listener {
         compatible = "zmk,input-listener";
-        status = "disabled"
+        status = "disabled";
         device = <&vtrackball>;
         layers = <3>;
         evt-type = <INPUT_EV_REL>;
