@@ -45,12 +45,15 @@
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&vtrackball>;
-        layers = <3>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_MISC>;
         y-input-code = <INPUT_REL_WHEEL>;
         y-invert;
         bindings = <&ib_wheel_scaler 1 14>;
+        scroll {
+          layers = <SCROLL_LAYER>;
+          input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
+        };
     };
 
     /* define a resolution down scaler only for INPUT_REL_WHEEL */
