@@ -85,7 +85,7 @@
     combos {
         compatible = "zmk,combos";
 
-        studio_unlock {
+        bootloader {
             bindings = <&bootloader>;
             key-positions = <0 11>;
         };
