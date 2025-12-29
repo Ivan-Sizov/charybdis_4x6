@@ -44,6 +44,7 @@
 
         // Basic mouse movement (cursor control) - always active
         mouse {
+            layers = <0 1 2>;  // Adjust to your scroll layer number
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 8 8>;
         };
 
