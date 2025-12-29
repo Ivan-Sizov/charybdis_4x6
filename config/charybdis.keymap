@@ -46,7 +46,7 @@
         device = <&vtrackball>;
         layers = <3>;
         evt-type = <INPUT_EV_REL>;
-        input-code = <INPUT_REL_WHEEL>;
+        input-codes = <INPUT_REL_WHEEL>;
         invert;
         bindings = <&ib_rel_scaler 1 14>;
     };
@@ -56,7 +56,7 @@
         device = <&vtrackball>;
         layers = <3>;
         evt-type = <INPUT_EV_REL>;
-        input-code = <INPUT_REL_HWHEEL>;
+        input-codes = <INPUT_REL_HWHEEL>;
         bindings = <&ib_rel_scaler 1 14>;  // Same scaler can work for both!
     };
 
