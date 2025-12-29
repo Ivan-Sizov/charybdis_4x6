@@ -48,7 +48,6 @@
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_HWHEEL>;
         y-input-code = <INPUT_REL_WHEEL>;
-        invert;
         bindings = <&ib_hwheel_scaler 1 14 &ib_wheel_scaler 1 14>;
     };
 
