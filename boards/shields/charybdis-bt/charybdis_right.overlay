@@ -35,10 +35,25 @@
     status = "okay";
 };
 
-// https://github.com/badjeff/zmk-pmw3610-driver
 / {
-  trackball_listener {
+  split_inputs {
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    trackball_split: trackball_split@0 {
+      compatible = "zmk,input-split";
+      reg = <0>;
+    };
+  };
+
+  trackball_listener: trackball_listener {
     compatible = "zmk,input-listener";
-    device = <&trackball>;
+    status = "disabled";
+    device = <&trackball_split>;
+
+    scroll {
+      layers = <Scroll>;
+      input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
+    };
   };
 };
