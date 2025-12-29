@@ -6,6 +6,11 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
 
+#define Base 0
+#define Nav 1
+#define Num 2
+#define Scroll 3
+
 // The matrix transform is 6 columns over because the left half is 6 columns wide.
 &default_transform {
 	col-offset = <6>;
@@ -31,20 +36,28 @@
 		;
 };
 
-// Enable and configure the trackball directly
 &trackball {
     status = "okay";
+};
 
-    compatible = "zmk,input-listener";
+/ {
+  split_inputs {
+    #address-cells = <1>;
+    #size-cells = <0>;
 
-    // Basic mouse movement (cursor control) - always active
-    mouse {
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 8 8>;
+    trackball_split: trackball_split@0 {
+      compatible = "zmk,input-split";
+      reg = <0>;
     };
+  };
 
-    # Optional: Scroll behavior on specific layer
+  trackball_listener: trackball_listener {
+    compatible = "zmk,input-listener";
+    device = <&trackball>;
+
     scroll {
-        layers = <3>;  // Adjust to your scroll layer number
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
-     ;
+      layers = <Scroll>;
+      input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 12>, <&zip_xy_to_scroll_mapper>;
+    };
+  };
 };
