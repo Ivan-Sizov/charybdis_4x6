@@ -1,29 +1,18 @@
 #include "charybdis.dtsi"
-#include "charybdis_pmw3610.dtsi"
-
+#include "split_input_common.dtsi"
 / {
-    // The physical layout is already defined in charybdis.dtsi
-    // via charybdis-layouts.dtsi
-
     chosen {
-        // Dongle essentials
-        zmk,usb = &usbd;
-        zmk,bluetooth = &bt;
+        zmk,kscan = &mock_kscan;
+    };
 
-        // Keep physical layout reference
-        zmk,physical-layout = &charybdis_physical_layout;
-
-        // Don't set kscan or matrix-transform for dongle
-        // zmk,kscan = &kscan0;  // Comment out or remove
-        // zmk,matrix-transform = &default_transform;  // Comment out or remove
+    mock_kscan: kscan_1 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
     };
 };
 
-&trackball {
+&trackball_listener {
     status = "okay";
-};
-
-// If needed, ensure the kscan is disabled for dongle
-&kscan0 {
-    status = "disabled";
 };
