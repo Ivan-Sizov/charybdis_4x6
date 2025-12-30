@@ -1,3 +1,4 @@
+#include "keys_de_swiss.h"
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors/mouse_keys.dtsi>
 #include <behaviors.dtsi>
@@ -10,6 +11,32 @@
 // };
 
 / {
+    /* input config for mouse move mode */
+
+    trackball_snipe_listener {
+        compatible = "zmk,input-behavior-listener";
+        device = <&trackball>;
+        layers = <4>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <4>;
+    };
+
+
+    // #define QUERTZ    0
+    // #define NUMBERS   1
+    // #define NAV-FUN   2
+    // #define MAC       3
+    // #define MAC-NUM   4
+    // #define MAC-NAV   5
+    // #define GAME      6
+    // #define GAME-NUM  7
+    // #define GAME-NAV  8
+    // #define SCROLL    9
+    // #define SNIPER   10
+    // #define FN
     combos {
         compatible = "zmk,combos";
 
