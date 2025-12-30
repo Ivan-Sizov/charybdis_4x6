@@ -1,39 +1,29 @@
+#include "charybdis.dtsi"
 #include "charybdis_pmw3610.dtsi"
-// DO NOT include charybdis.dtsi or charybdis-layouts.dtsi for dongle
 
 / {
-    // The dongle doesn't need a physical layout, but ZMK might still reference it
-    // Create a minimal/empty physical layout to satisfy the linker
-    charybdis_physical_layout: charybdis_physical_layout {
-        compatible = "zmk,physical-layout";
-        display-name = "Charybdis Dongle";
-
-        // Minimal key positions (empty or single dummy key)
-        keys = <>;
-        // OR with a dummy key:
-        // keys = <&key_physical_attrs 0 0 0 0 0 0 0>;
-
-        // No kscan or transform needed for dongle
-    };
+    // The physical layout is already defined in charybdis.dtsi
+    // via charybdis-layouts.dtsi
 
     chosen {
         // Dongle essentials
         zmk,usb = &usbd;
         zmk,bluetooth = &bt;
 
-        // Reference the minimal physical layout
+        // Keep physical layout reference
         zmk,physical-layout = &charybdis_physical_layout;
 
-        // No kscan or matrix-transform for dongle
-    };
-
-    // Battery monitoring for dongle
-    vbatt: vbatt {
-        compatible = "zmk,battery-nrf-vddh";
+        // Don't set kscan or matrix-transform for dongle
+        // zmk,kscan = &kscan0;  // Comment out or remove
+        // zmk,matrix-transform = &default_transform;  // Comment out or remove
     };
 };
 
-// Enable trackball
 &trackball {
     status = "okay";
+};
+
+// If needed, ensure the kscan is disabled for dongle
+&kscan0 {
+    status = "disabled";
 };
