@@ -1,8 +1,4 @@
 #include "charybdis.dtsi"
-#include "charybdis_pmw3610.dtsi"
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
 
@@ -10,24 +6,6 @@
 #define Nav 1
 #define Num 2
 #define Scroll 3
-
-/ {
-    chosen {
-        zmk,kscan = &mock_kscan;
-    };
-
-    mock_kscan: kscan_1 {
-        compatible = "zmk,kscan-mock";
-        columns = <0>;
-        rows = <0>;
-        events = <0>;
-    };
-};
-
-// Enable the trackball
-&trackball {
-    status = "okay";
-};
 
 / {
   split_inputs {
@@ -49,4 +27,22 @@
       input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 12>, <&zip_xy_to_scroll_mapper>;
     };
   };
+};
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: kscan_1 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
+
+// Enable the trackball
+&trackball {
+    status = "okay";
 };
