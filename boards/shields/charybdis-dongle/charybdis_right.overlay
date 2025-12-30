@@ -37,6 +37,7 @@
                 ;
 };
 
+// Enable the trackball
 &trackball {
     status = "okay";
 };
