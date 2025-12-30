@@ -45,8 +45,3 @@
         events = <0>;
     };
 };
-
-// Enable the trackball
-&trackball {
-    status = "okay";
-};
