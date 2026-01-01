@@ -17,6 +17,7 @@
     // #define SCROLL    9
     // #define SNIPER   10
     // #define FN
+/ {
     combos {
         compatible = "zmk,combos";
 
