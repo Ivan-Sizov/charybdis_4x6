@@ -146,7 +146,7 @@ jobs:
               *dongle*)
               echo "converting trackball device to dongle format"
               # Try with just trackball (same as BT)
-              sed -i 's/device = <&trackball_split>;/device = <\&trackball>;/g' "$base_config_path/charybdis.keymap"
+              sed -i 's/device = <&vtrackball>;/device = <\&trackball>;/g' "$base_config_path/charybdis.keymap"
               ;;
               esac
               
