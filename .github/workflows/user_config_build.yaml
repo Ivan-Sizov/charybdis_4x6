@@ -137,16 +137,16 @@ jobs:
                 "$base_config_path/charybdis.keymap"
               echo "format: ${{ env.format }}"
               echo "format: ${{ env.format }}"
+          
               case "${{ env.format }}" in
               *bt*)
               echo "converting trackball device to bt format"
-              # Convert vtrackball to trackball for BT
-              sed -i -E 's/device\s*=\s*<&vtrackball\s*>/device = <\&trackball>/g' "$base_config_path/charybdis.keymap"
+              sed -i 's/device = <&vtrackball>;/device = <\&trackball>;/g' "$base_config_path/charybdis.keymap"
               ;;
               *dongle*)
               echo "converting trackball device to dongle format"
-              # Convert vtrackball to trackball_split for dongle
-              sed -i -E 's/device\s*=\s*<&vtrackball\s*>/device = <\&trackball_split>/g' "$base_config_path/charybdis.keymap"
+              # Try with just trackball (same as BT)
+              sed -i 's/device = <&vtrackball>;/device = <\&trackball>;/g' "$base_config_path/charybdis.keymap"
               ;;
               esac
               
