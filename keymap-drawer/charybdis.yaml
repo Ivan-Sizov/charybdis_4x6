@@ -1,7 +1,62 @@
 layout: {zmk_keyboard: charybdis}
 layers:
-  QUERTY: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', TAB, Q, W, E, R, T, Y, U, I, O, P, '[', ESCAPE, A, S, D, F, G, H, J, K, L, ;, '''', LEFT SHIFT,
-    Z, X, C, V, B, N, M, ',', ., /, RSHIFT, '1', '2', '3', '6', '7', '4', '5', '8']
+  QUERTY:
+  - '`'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - '-'
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - '['
+  - ESCAPE
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - ''''
+  - LEFT SHIFT
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - RSHIFT
+  - LEFT WIN
+  - {t: SPACE, h: NUMBERS}
+  - NAV-FUN
+  - NAV-FUN
+  - {t: SPACE, h: NUMBERS}
+  - LEFT ALT
+  - LEFT CONTROL
+  - RIGHT CONTROL
   NUMBERS:
   - BT CLR
   - {t: BT, h: '0'}
@@ -52,7 +107,7 @@ layers:
   - ''
   - RIGHT SHIFT
   - ''
-  - ''
+  - {type: held}
   - ''
   - ''
   - ''
@@ -110,7 +165,7 @@ layers:
   - RSHFT
   - INS
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - '0'
   - {t: ▽, type: trans}
